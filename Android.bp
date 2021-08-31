@@ -1,0 +1,28 @@
+cc_binary {
+    name: "android.hardware.automotive.vehicle@2.0-service-vss",
+    overrides: ["android.hardware.automotive.vehicle@2.0-service"],
+    vintf_fragments: [
+      "android.hardware.automotive.vehicle@2.0-service-vss.xml",
+    ],
+    init_rc: ["android.hardware.automotive.vehicle@2.0-service-vss.rc"],
+    vendor: true,
+    relative_install_path: "hw",
+    srcs: ["src/**/*.cpp"],
+    shared_libs: [
+        "libbase",
+        "libjsoncpp",
+        "libprotobuf-cpp-lite",
+        "libhidlbase",
+        "liblog",
+        "libutils",
+        "android.hardware.automotive.vehicle@2.0",
+        "libbinder_ndk",
+        "carwatchdog_aidl_interface-ndk_platform",
+    ],
+    static_libs: [
+        "android.hardware.automotive.vehicle@2.0-manager-lib",
+        "android.hardware.automotive.vehicle@2.0-default-impl-lib",
+        "android.hardware.automotive.vehicle@2.0-libproto-native",
+        "libqemu_pipe",
+    ],
+}
